@@ -32,7 +32,7 @@ function Settings() {
         }
 
         // Get all users and find the current user by id
-        const res = await fetch(`http://localhost:3000/api/users`, {
+        const res = await fetch(`${process.env.RENDER_URL}/api/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -133,7 +133,7 @@ function Settings() {
 
       // Use Mongo _id if present, otherwise numeric id
       const idParam = userInfo._id || userInfo.id;
-      const res = await fetch(`http://localhost:3000/api/users/${idParam}/password`, {
+      const res = await fetch(`${process.env.RENDER_URL}/api/users/${idParam}/password`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

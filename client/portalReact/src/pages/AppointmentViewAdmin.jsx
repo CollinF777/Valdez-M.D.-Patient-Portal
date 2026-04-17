@@ -84,7 +84,7 @@ function AppointmentViewAdmin() {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:3000/api/users", {
+      const res = await fetch(`${process.env.RENDER_URL}/api/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
@@ -108,7 +108,7 @@ function AppointmentViewAdmin() {
       }
       const userId = payload.id;
 
-      const res = await fetch(`http://localhost:3000/api/appointments/${userId}`, {
+      const res = await fetch(`${process.env.RENDER_URL}/api/appointments/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -163,7 +163,7 @@ function AppointmentViewAdmin() {
         doctorId: Number(formData.doctorId),
       };
 
-      const res = await fetch("http://localhost:3000/api/appointments", {
+      const res = await fetch(`${process.env.RENDER_URL}/api/appointments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -209,7 +209,7 @@ function AppointmentViewAdmin() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:3000/api/appointments/${appointmentToDelete.id || appointmentToDelete._id}`, {
+      const res = await fetch(`${process.env.RENDER_URL}/api/appointments/${appointmentToDelete.id || appointmentToDelete._id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -285,7 +285,7 @@ function AppointmentViewAdmin() {
         doctorId: Number(editFormData.doctorId),
       };
 
-      const res = await fetch(`http://localhost:3000/api/appointments/${appointmentIdParam}`, {
+      const res = await fetch(`${process.env.RENDER_URL}/api/appointments/${appointmentIdParam}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

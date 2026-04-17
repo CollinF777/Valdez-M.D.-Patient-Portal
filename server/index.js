@@ -18,9 +18,23 @@ app.use(express.json());
 // Serve static files (HTML, CSS, JS, images)
 // app.use(express.static(path.join(__dirname, "../client/public")));
 // Development CORS configuration
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://valdez-md.vercel.app"
+];
+
 app.use(cors({
-  origin: "http://localhost:5173", // Allow all origins in development
-  methods: ["GET", "PUT", "POST", "DELETE"],
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Not allowed by CORS"));
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
