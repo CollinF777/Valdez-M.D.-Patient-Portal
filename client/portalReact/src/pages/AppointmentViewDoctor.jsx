@@ -71,7 +71,7 @@ function AppointmentViewDoctor() {
         }
         const userId = payload.id;
 
-        const res = await fetch(`${import.meta.env.RENDER_URL}/api/appointments/${userId}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/appointments/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -106,7 +106,7 @@ function AppointmentViewDoctor() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${import.meta.env.RENDER_URL}/api/appointments/${appointmentToDelete.id || appointmentToDelete._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/appointments/${appointmentToDelete.id || appointmentToDelete._id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
