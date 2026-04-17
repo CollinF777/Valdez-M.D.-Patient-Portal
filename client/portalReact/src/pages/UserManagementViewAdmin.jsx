@@ -40,7 +40,7 @@ function UserManagementViewAdmin() {
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`${process.env.RENDER_URL}/api/users`, {
+            const res = await fetch(`${import.meta.env.RENDER_URL}/api/users`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             const data = await res.json();
@@ -65,8 +65,8 @@ function UserManagementViewAdmin() {
             const token = localStorage.getItem("token");
             const method = editingUser ? "PUT" : "POST";
             const url = editingUser
-                ? `${process.env.RENDER_URL}/api/users/${editingUser.id}`
-                : `${process.env.RENDER_URL}/api/users`;
+                ? `${import.meta.env.RENDER_URL}/api/users/${editingUser.id}`
+                : `${import.meta.env.RENDER_URL}/api/users`;
 
             const payload = { ...formData };
             if (editingUser && !formData.password) delete payload.password;
@@ -121,7 +121,7 @@ function UserManagementViewAdmin() {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`${process.env.RENDER_URL}/api/users/${userToDelete.id}`, {
+            const res = await fetch(`${import.meta.env.RENDER_URL}/api/users/${userToDelete.id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             });

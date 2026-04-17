@@ -43,7 +43,7 @@ function DashboardPatient() {
         const lastName = payload.lastName || "";
         setUserName(`${firstName} ${lastName}`.trim() || "User");
 
-        const res = await fetch(`${process.env.RENDER_URL}/api/appointments/${userId}`, {
+        const res = await fetch(`${import.meta.env.RENDER_URL}/api/appointments/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

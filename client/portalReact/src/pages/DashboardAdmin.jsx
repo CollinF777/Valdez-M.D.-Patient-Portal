@@ -34,13 +34,13 @@ function DashboardAdmin() {
 
       try {
         // Fetch appointments
-        const res = await fetch(`${process.env.RENDER_URL}/api/appointments/${userId}`, {
+        const res = await fetch(`${import.meta.env.RENDER_URL}/api/appointments/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setAppointments(res.ok ? await res.json() : []);
 
         // Fetch users
-        const userRes = await fetch(`${process.env.RENDER_URL}/api/users`, {
+        const userRes = await fetch(`${import.meta.env.RENDER_URL}/api/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const userData = userRes.ok ? await userRes.json() : [];
