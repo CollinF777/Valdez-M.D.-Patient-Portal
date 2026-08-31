@@ -20,7 +20,8 @@ app.use(express.json());
 // Development CORS configuration
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://valdez-md.vercel.app"
+  "https://valdez-md.vercel.app",
+  "https://valdez-r06syntpk-collins-team.vercel.app"
 ];
 
 app.use(cors({
