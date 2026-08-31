@@ -34,7 +34,7 @@ function Login() {
     try {
       console.log("Attempting login with:", { username, password });
 
-      const response = await fetch("http://localhost:3000/api/auth/login", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -46,9 +46,7 @@ function Login() {
       try {
         data = await response.json();
         console.log("Parsed JSON:", data);
-      } catch (jsonErr) {
-        const text = await response.text();
-        console.log("Response text (not JSON):", text);
+      } catch (e) {
         addNotification("Invalid server response, expected JSON", 'error');
         throw new Error("Invalid server response, expected JSON");
       }

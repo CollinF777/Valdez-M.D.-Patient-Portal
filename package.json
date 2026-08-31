@@ -6,7 +6,8 @@
     "dev": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run server\" \"npm run client\"",
     "server": "cd server && nodemon index.js",
     "client": "cd client/portalReact && npm run dev",
-    "install-all": "cd server && npm install && cd ../client/portalReact && npm install"
+    "install-all": "cd server && npm install && cd ../client/portalReact && npm install",
+    "build": "cd client/portalReact && npm install && npm run build"
   },
   "devDependencies": {
     "concurrently": "^9.1.0",
