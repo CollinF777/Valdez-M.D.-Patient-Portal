@@ -20,8 +20,7 @@ app.use(express.json());
 // Development CORS configuration
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://valdez-md.vercel.app",
-  "https://valdez-r06syntpk-collins-team.vercel.app"
+  "https://valdez-md.vercel.app"
 ];
 
 app.use(cors({
@@ -29,7 +28,13 @@ app.use(cors({
     // allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
+    // Regex is for vercel preview origins
+    const isAllowed =
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/valdez-.*-collins-team\.vercel\.app$/.test(origin);
+
+
+    if (isAllowed) {
       return callback(null, true);
     }
 
