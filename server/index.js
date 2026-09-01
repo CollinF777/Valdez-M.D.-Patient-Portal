@@ -5,6 +5,7 @@ const path = require("path");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes =  require("./routes/userRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes");
+const messageRoutes = require("./routes/messageRoutes");
 
 require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 
@@ -50,6 +51,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 // Appointment CRUD routes
 app.use("/api/appointments", appointmentRoutes);
+// Message CRD routes
+app.use("/api/messages", messageRoutes);
 
 mongoose.connect(MONGO_URI)
     .then(() => console.log("Connected to DB"))
